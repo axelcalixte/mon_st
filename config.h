@@ -6,13 +6,11 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font =
-    "Liga SFMono Nerd "
-    "Font:style=Regular:pixelsize=18:antialias=true:autohint=true";
+    "Iosevka Term:style=Regular:pixelsize=19:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-    /*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true",
-     */
-    "FontAwesome:pixelsize=16:antialias=true:autohint=true"};
+     "Font Awesome 5 Free Regular:style=Regular:pixelsize=13:antialias=true:autohint=true",
+     "Noto Color Emoji:style=Regular:pixelsize=13:antialias=true:autohint=true"};
 
 static int borderpx = 2;
 
@@ -113,50 +111,32 @@ float alpha = 0.95;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
     /* 8 normal colors */
-    /* "#3b4252",  black   */
-    /* "#bf616a",  red     */
-    /* "#a3be8c",  green   */
-    /* "#ebcb8b",  yellow  */
-    /* "#81a1c1",  blue    */
-    /* "#b48ead",  magenta */
-    /* "#88c0d0",  cyan    */
-    /* "#e5e9f0",  white   */
-    "#403c58",
-    "#ea6f91",
-    "#9bced7",
-    "#f1ca93",
-    "#018993",
-    "#c3a5e6",
-    "#eabbb9",
-    "#faebd7",
+    "#090618",
+    "#C34043",
+    "#76946A",
+    "#C0A36E",
+    "#7E9CD8",
+    "#957FB8",
+    "#6A9589",
+    "#C8C093",
 
     /* 8 bright colors */
-    /* "#4c566a",  black   */
-    /* "#bf616a",  red     */
-    /* "#a3be8c",  green   */
-    /* "#ebcb8b",  yellow  */
-    /* "#81a1c1",  blue    */
-    /* "#b48ead",  magenta */
-    /* "#8fbcbb",  cyan    */
-    /* "#eceff4",  white   */
-    "#403c58",
-    "#ea6f91",
-    "#9bced7",
-    "#f1ca93",
-    "#018993",
-    "#c3a5e6",
-    "#eabbb9",
-    "#faebd7",
+    "#727169",
+    "#E82424",
+    "#98BB6C",
+    "#E6C384",
+    "#7FB4CA",
+    "#938AA9",
+    "#7AA89F",
+    "#DCD7BA",
 
     [255] = 0,
 
     /* more colors can be added after 255 to use with DefaultXX */
-    /*"#2e3440",  background */
-    /*"#d8dee9",  foreground */
-    /*"black", */
-    "#1f1d29",
-    "#ffffff",
-    "#ffffff",
+    "#1F1F28",  //background 
+    "#DCD7BA",  //foreground 
+    "#C8C093",
+  
 };
 
 /*
@@ -165,9 +145,6 @@ static const char *colorname[] = {
  */
 unsigned int defaultfg = 257;
 unsigned int defaultbg = 256;
-// unsigned int defaultbg = 258;
-// static unsigned int defaultcs = 257;
-// static unsigned int defaultrcs = 256;
 static unsigned int defaultcs = 258;
 static unsigned int defaultrcs = 258;
 
