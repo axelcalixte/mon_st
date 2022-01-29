@@ -1512,10 +1512,6 @@ xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len, int x, i
 		bg = &dc.col[base.bg];
 	}
 
-	/* Change basic system colors [0-7] to bright system colors [8-15] */
-	if ((base.mode & ATTR_BOLD_FAINT) == ATTR_BOLD && BETWEEN(base.fg, 0, 7))
-		fg = &dc.col[base.fg + 8];
-
 	if (IS_SET(MODE_REVERSE)) {
 		if (fg == &dc.col[defaultfg]) {
 			fg = &dc.col[defaultbg];
@@ -2213,23 +2209,4 @@ run:
 	run();
 
 	return 0;
-}
-
-void
-opencopied(const Arg *arg)
-{
-	size_t const max_cmd = 2048;
-	char * const clip = xsel.clipboard;
-	if(!clip) {
-		fprintf(stderr, "Warning: nothing copied to clipboard\n");
-		return;
-	}
-
-	/* account for space/quote (3) and \0 (1) and & (1) */
-	/* e.g.: xdg-open "https://st.suckless.org"& */
-	size_t const cmd_size = max_cmd + strlen(clip) + 5;
-	char cmd[cmd_size];
-
-	snprintf(cmd, cmd_size, "%s \"%s\"&", (char *)arg->v, clip);
-	system(cmd);
 }

@@ -5,12 +5,11 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font =
-    "Iosevka Term:style=Regular:pixelsize=19:antialias=true:autohint=true";
+static char *font = "Iosevka:pixelsize=19:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-     "Font Awesome 5 Free Regular:style=Regular:pixelsize=13:antialias=true:autohint=true",
-     "Noto Color Emoji:style=Regular:pixelsize=13:antialias=true:autohint=true"};
+    "Font Awesome 5 Free Regular:style=Regular:pixelsize=13",
+    "Noto Color Emoji:style=Regular:pixelsize=13"};
 
 static int borderpx = 2;
 
@@ -111,42 +110,34 @@ float alpha = 0.95;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
     /* 8 normal colors */
-    "#090618",
-    "#C34043",
-    "#76946A",
-    "#C0A36E",
-    "#7E9CD8",
-    "#957FB8",
-    "#6A9589",
-    "#C8C093",
+    [0] = "#1d2021", /* medium contrast: #282828 / soft contrast: #32302f */
+    [1] = "#ea6962", /* red     */
+    [2] = "#a9b665", /* green   */
+    [3] = "#d8a657", /* yellow  */
+    [4] = "#7daea3", /* blue    */
+    [5] = "#d3869b", /* magenta */
+    [6] = "#89b482", /* cyan    */
+    [7] = "#d4be98", /* white   */
 
     /* 8 bright colors */
-    "#727169",
-    "#E82424",
-    "#98BB6C",
-    "#E6C384",
-    "#7FB4CA",
-    "#938AA9",
-    "#7AA89F",
-    "#DCD7BA",
-
-    [255] = 0,
-
-    /* more colors can be added after 255 to use with DefaultXX */
-    "#1F1F28",  //background 
-    "#DCD7BA",  //foreground 
-    "#C8C093",
-  
+    [8] = "#928374",  /* black   */
+    [9] = "#ef938e",  /* red     */
+    [10] = "#bbc585", /* green   */
+    [11] = "#e1bb7e", /* yellow  */
+    [12] = "#9dc2ba", /* blue    */
+    [13] = "#e1acbb", /* magenta */
+    [14] = "#a7c7a2", /* cyan    */
+    [15] = "#e2d3ba", /* white   */
 };
 
 /*
  * Default colors (colorname index)
- * foreground, background, cursor, reverse cursor
+ * foreground, background, cursor
  */
-unsigned int defaultfg = 257;
-unsigned int defaultbg = 256;
-static unsigned int defaultcs = 258;
-static unsigned int defaultrcs = 258;
+unsigned int defaultfg = 15;
+unsigned int defaultbg = 0;
+static unsigned int defaultcs = 15;
+static unsigned int defaultrcs = 257;
 
 /*
  * Default shape of cursor
@@ -190,8 +181,6 @@ static uint forcemousemod = ShiftMask;
  */
 static MouseShortcut mshortcuts[] = {
     /* mask                 button   function        argument       release */
-    {0, Button4, kscrollup, {.i = 1}},
-    {0, Button5, kscrolldown, {.i = 1}},
     {XK_ANY_MOD, Button2, selpaste, {.i = 0}, 1},
     {ShiftMask, Button4, ttysend, {.s = "\033[5;2~"}},
     {XK_ANY_MOD, Button4, ttysend, {.s = "\031"}},
@@ -217,10 +206,6 @@ static Shortcut shortcuts[] = {
     {TERMMOD, XK_Y, selpaste, {.i = 0}},
     {ShiftMask, XK_Insert, selpaste, {.i = 0}},
     {TERMMOD, XK_Num_Lock, numlock, {.i = 0}},
-    {TERMMOD, XK_l, copyurl, {.i = 0}},
-    {TERMMOD, XK_o, opencopied, {.v = "xdg-open"}},
-    {ShiftMask, XK_Prior, kscrollup, {.i = -1}},
-    {ShiftMask, XK_Next, kscrolldown, {.i = -1}},
 };
 
 /*
