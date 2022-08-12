@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "monospace:pixelsize=14";
+static char *font = "Liga SFMono Nerd Font:style=Regular:pixelsize=14";
 /* Spare fonts */
 static char *font2[] = {
     "Font Awesome 5 Free Regular:style=Regular:pixelsize=14",
